@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/download.py": {
+      "runtime": "python3.9"
+    }
+  }
+}
