@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>YouTube Downloader</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+  <div class="container mx-auto p-6">
+    <h1 class="text-3xl font-bold text-center mb-6">YouTube Downloader</h1>
+    <form id="downloadForm" class="max-w-lg mx-auto bg-white p-6 rounded shadow">
+      <div class="mb-4">
+        <label class="block text-gray-700">YouTube URL:</label>
+        <input type="text" id="videoUrl" class="w-full border border-gray-300 p-2 rounded" placeholder="Enter YouTube URL">
+      </div>
+      <div class="mb-4">
+        <label class="block text-gray-700">Quality:</label>
+        <select id="quality" class="w-full border border-gray-300 p-2 rounded">
+          <option value="best">Best</option>
+          <option value="medium">Medium</option>
+          <option value="low">Low</option>
+          <option value="audio">Audio Only (MP3)</option>
+        </select>
+      </div>
+      <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Download</button>
+    </form>
+    <div id="result" class="mt-6 max-w-lg mx-auto"></div>
+  </div>
+  <script>
+    document.getElementById('downloadForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const url = document.getElementById('videoUrl').value;
+      const quality = document.getElementById('quality').value;
+      if (!url) {
+        alert('Please enter a URL.');
+        return;
+      }
+      const resultDiv = document.getElementById('result');
+      resultDiv.innerHTML = '<p class="text-gray-700">Downloading...</p>';
+      try {
+        const response = await fetch(`/api/download?url=${encodeURIComponent(url)}&quality=${encodeURIComponent(quality)}`);
+        const data = await response.json();
+        if (response.ok) {
+          resultDiv.innerHTML = `<p class="text-green-700">Download complete!</p>
+          <p class="text-gray-700">File saved to: ${data.file_path}</p>
+          <pre class="bg-gray-200 p-2 rounded whitespace-pre-wrap">${data.progress.join('\n')}</pre>`;
+        } else {
+          resultDiv.innerHTML = `<p class="text-red-700">Error: ${data.error}</p>
+          <pre class="bg-gray-200 p-2 rounded whitespace-pre-wrap">${data.progress.join('\n')}</pre>`;
+        }
+      } catch (err) {
+        resultDiv.innerHTML = `<p class="text-red-700">Request failed: ${err}</p>`;
+      }
+    });
+  </script>
+</body>
+</html>
