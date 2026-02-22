@@ -11,7 +11,7 @@ const observer = new IntersectionObserver(entries => {
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 // Copy to clipboard
-function cp(btn, text) {
+export function cp(btn, text) {
     navigator.clipboard.writeText(text).then(() => {
         const original = btn.innerHTML;
         btn.innerHTML = '<i class="f7-icons" aria-hidden="true">checkmark</i>Copied';
