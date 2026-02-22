@@ -1,0 +1,56 @@
+{
+  "name": "@iambhvsh/ytdl",
+  "version": "1.0.3",
+  "description": "A privacy-first, cross-platform CLI YouTube downloader backed by yt-dlp — no ads, no trackers, no data leaves your device.",
+  "type": "module",
+  "main": "dist/main.js",
+  "types": "dist/main.d.ts",
+  "bin": {
+    "ytdl": "bin/ytdl.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/main.ts",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "youtube",
+    "downloader",
+    "yt-dlp",
+    "cli",
+    "ytdl",
+    "privacy"
+  ],
+  "author": "Bhavesh Patil <iam.bhvsh@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^5.6.2",
+    "cli-progress": "^3.12.0",
+    "figlet": "^1.10.0",
+    "inquirer": "^13.2.5",
+    "yt-dlp-wrap": "^2.3.12"
+  },
+  "devDependencies": {
+    "@types/cli-progress": "^3.11.6",
+    "@types/figlet": "^1.7.0",
+    "@types/inquirer": "^9.0.9",
+    "@types/node": "^20.19.33",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iambhvsh/ytdl.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist",
+    "bin"
+  ]
+}
