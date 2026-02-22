@@ -1,0 +1,46 @@
+# Node modules
+node_modules/
+
+# Build output
+dist/
+
+# TypeScript
+*.tsbuildinfo
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.*
+
+# Binaries
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Package tarballs
+*.tgz
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Misc
+coverage/
+
+# Output folders
+YTDL/
+Downloads/
+
+# Others
+*.log

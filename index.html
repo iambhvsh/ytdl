@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A privacy-first CLI YouTube downloader. No ads, no trackers. Just the video." />
+    <meta name="keywords" content="YouTube downloader, CLI, privacy, yt-dlp, open source, video download, no ads, no trackers, iambhvsh" />
+    <meta name="author" content="Bhavesh Patil" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#000000" />
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://github.com/iambhvsh/ytdl" />
+    <meta property="og:title" content="@iambhvsh/ytdl - Privacy-first CLI YouTube downloader" />
+    <meta property="og:description" content="A privacy-first CLI YouTube downloader. No ads, no trackers. Just the video." />
+    <meta property="og:image" content="/assets/images/og.png" />
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://github.com/iambhvsh/ytdl" />
+    <meta name="twitter:title" content="@iambhvsh/ytdl - Privacy-first CLI YouTube downloader" />
+    <meta name="twitter:description" content="A privacy-first CLI YouTube downloader. No ads, no trackers. Just the video." />
+    <meta name="twitter:image" content="/assets/images/og.png" />
+    <title>@iambhvsh/ytdl - Privacy-first CLI YouTube downloader</title>
+    <link rel="canonical" href="https://github.com/iambhvsh/ytdl" />
+    <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/framework7-icons@5/css/framework7-icons.css" />
+    
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <header class="navbar" role="banner">
+        <div class="navbar-inner">
+            <a href="#" class="brand" aria-label="YTDL home">
+                <span class="live-dot" aria-hidden="true"></span>
+                @iambhvsh/ytdl
+            </a>
+
+            <nav class="nav-links" aria-label="Site navigation">
+                <a class="nav-link" href="#features">Features</a>
+                <a class="nav-link" href="#install">Install</a>
+                <a class="nav-link" href="#privacy">Privacy</a>
+            </nav>
+
+            <a class="nav-cta" href="https://github.com/iambhvsh/ytdl" target="_blank" rel="noopener"
+                aria-label="View on GitHub">
+                <i class="f7-icons" aria-hidden="true">logo_github</i>GitHub
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="hero-heading">
+        <div class="container">
+            <div class="badge">
+                <span class="badge-dot" aria-hidden="true"></span>
+                v1.0.2 · MIT License
+            </div>
+
+            <h1 class="hero-title" id="hero-heading">
+                Download YouTube.
+                <span class="hero-title-blue">Without the noise.</span>
+            </h1>
+
+            <p class="hero-body">
+                A privacy-first CLI tool powered by yt-dlp. No ads, no trackers,
+                no data leaves your device.
+            </p>
+
+            <div class="btn-row">
+                <a href="#install" class="btn btn-filled">
+                    <i class="f7-icons" aria-hidden="true">arrow_down_circle_fill</i>Get Started
+                </a>
+                <a href="https://github.com/iambhvsh/ytdl" target="_blank" rel="noopener" class="btn btn-plain">
+                    <i class="f7-icons" aria-hidden="true">logo_github</i>View Source
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terminal Preview -->
+    <section class="terminal-section" aria-label="CLI preview">
+        <div class="container reveal">
+            <div class="terminal-window" role="img" aria-label="YTDL terminal session demonstration">
+                <div class="terminal-titlebar" aria-hidden="true">
+                    <span class="traffic-light" style="background:#ff453a"></span>
+                    <span class="traffic-light" style="background:#ffd60a"></span>
+                    <span class="traffic-light" style="background:#30d158"></span>
+                    <span class="terminal-name">@iambhvsh/ytdl — zsh</span>
+                </div>
+                <div class="terminal-body" aria-hidden="true">
+                    <span class="tl t-dim"># install once, run forever</span>
+                    <span class="tl t-prompt t-white">npm install -g @iambhvsh/ytdl</span>
+                    <span class="tl t-green">added 1 package — @iambhvsh/ytdl@1.0.2</span>
+                    <span class="tl"> </span>
+                    <span class="tl t-prompt t-white">ytdl</span>
+                    <span class="tl"> </span>
+                    <span class="tl t-dim">📁 ~/Downloads/YTDL</span>
+                    <span class="tl t-dim">────────────────────────────────────</span>
+                    <span class="tl t-blue">🔗 URL: <span class="t-white">https://youtu.be/dQw4w9WgXcQ</span></span>
+                    <span class="tl t-yellow">🔍 Fetching info...</span>
+                    <span class="tl"> </span>
+                    <span class="tl t-blue">🎬 <span class="t-dim">Title :</span> <span class="t-white">Never Gonna Give
+                            You Up</span></span>
+                    <span class="tl t-green">👤 <span class="t-dim">Channel :</span> <span class="t-white">Rick
+                            Astley</span></span>
+                    <span class="tl t-blue">⏱ <span class="t-dim">Duration :</span> <span class="t-white">3m
+                            33s</span></span>
+                    <span class="tl t-dim">────────────────────────────────────</span>
+                    <span class="tl"> </span>
+                    <span class="tl t-green">❯ 1080p — Full HD</span>
+                    <span class="tl t-dim"> 720p — HD</span>
+                    <span class="tl t-dim"> 480p</span>
+                    <span class="tl t-dim"> Audio only — MP3</span>
+                    <span class="tl"> </span>
+                    <span class="tl t-green">🚀 Downloading — 1080p</span>
+                    <span class="tl"> </span>
+                    <span class="tl t-white"> ████████████████████░ 97% ↓ 5.2 MiB/s ETA 0s</span>
+                    <span class="t-cursor" aria-hidden="true"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section" id="features" aria-labelledby="features-heading">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="eyebrow">Why YTDL</p>
+                <h2 class="section-title" id="features-heading">Built around what matters.</h2>
+                <p class="section-body">Fast, private, and cross-platform. Engineered to stay out of your way.</p>
+            </div>
+
+            <div class="feature-grid reveal">
+
+                <article class="feature-card">
+                    <div class="feature-icon" aria-hidden="true"><i class="f7-icons">shield_fill</i></div>
+                    <h3 class="feature-name">Privacy First</h3>
+                    <p class="feature-desc">Zero telemetry, logs, or history. Everything stays on device. The only
+                        connection is to YouTube.</p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-icon" aria-hidden="true"><i class="f7-icons">bolt_fill</i></div>
+                    <h3 class="feature-name">Fast Downloads</h3>
+                    <p class="feature-desc">16 concurrent fragment downloads. Saturates your connection using yt-dlp's
+                        proven engine.</p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-icon" aria-hidden="true"><i class="f7-icons">checkmark_seal_fill</i></div>
+                    <h3 class="feature-name">Smart Quality</h3>
+                    <p class="feature-desc">Accurately detects and displays available video resolutions before you
+                        download.</p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-icon" aria-hidden="true"><i class="f7-icons">list_bullet</i></div>
+                    <h3 class="feature-name">Playlist Support</h3>
+                    <p class="feature-desc">Previews every entry before downloading. Set quality once for the whole
+                        playlist.</p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-icon" aria-hidden="true"><i class="f7-icons">waveform</i></div>
+                    <h3 class="feature-name">Audio Extraction</h3>
+                    <p class="feature-desc">High-quality MP3 via ffmpeg. AAC source preferred, re-encoded for universal
+                        playback.</p>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-icon" aria-hidden="true"><i class="f7-icons">square_arrow_down_fill</i></div>
+                    <h3 class="feature-name">Auto Setup</h3>
+                    <p class="feature-desc">Downloads yt-dlp on first run. Installs ffmpeg on Linux and Termux with no
+                        manual steps.</p>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Install -->
+    <section class="section" id="install" aria-labelledby="install-heading">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="eyebrow">Get Started</p>
+                <h2 class="section-title" id="install-heading">One command away.</h2>
+                <p class="section-body">Node.js 18+ required. No config files, no setup wizards.</p>
+            </div>
+
+            <div class="install-grid reveal">
+
+                <div class="steps">
+                    <div class="step">
+                        <span class="step-num">01</span>
+                        <div>
+                            <h4 class="step-title">Install globally</h4>
+                            <p class="step-desc">Use npm, pnpm, or yarn. The package ships with everything it needs.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <span class="step-num">02</span>
+                        <div>
+                            <h4 class="step-title">First run</h4>
+                            <p class="step-desc">yt-dlp downloads to <code>~/.ytdl/</code>. ffmpeg auto-installs on
+                                Linux and Termux.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <span class="step-num">03</span>
+                        <div>
+                            <h4 class="step-title">Paste any URL</h4>
+                            <p class="step-desc">Video, playlist, short, or channel. Pick quality, press enter. Files go
+                                to <code>~/Downloads/YTDL/</code>.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="code-stack">
+                    <div class="code-card">
+                        <div class="code-header">
+                            <span class="code-label">npm</span>
+                            <button class="copy-btn" onclick="cp(this,'npm install -g @iambhvsh/ytdl')"
+                                aria-label="Copy npm install command">
+                                <i class="f7-icons" aria-hidden="true">doc_on_doc</i>Copy
+                            </button>
+                        </div>
+                        <pre>npm install -g @iambhvsh/ytdl</pre>
+                    </div>
+                    <div class="code-card">
+                        <div class="code-header">
+                            <span class="code-label">pnpm</span>
+                            <button class="copy-btn" onclick="cp(this,'pnpm add -g @iambhvsh/ytdl')"
+                                aria-label="Copy pnpm install command">
+                                <i class="f7-icons" aria-hidden="true">doc_on_doc</i>Copy
+                            </button>
+                        </div>
+                        <pre>pnpm add -g @iambhvsh/ytdl</pre>
+                    </div>
+                    <div class="code-card">
+                        <div class="code-header">
+                            <span class="code-label">run</span>
+                            <button class="copy-btn" onclick="cp(this,'ytdl')" aria-label="Copy run command">
+                                <i class="f7-icons" aria-hidden="true">doc_on_doc</i>Copy
+                            </button>
+                        </div>
+                        <pre>ytdl</pre>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Platforms -->
+    <section class="section" aria-labelledby="platforms-heading">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="eyebrow">Compatibility</p>
+                <h2 class="section-title" id="platforms-heading">Runs everywhere.</h2>
+            </div>
+            <div class="platform-grid reveal">
+                <div class="platform-cell">
+                    <i class="f7-icons" aria-hidden="true">logo_windows</i>
+                    <span class="platform-name">Windows</span>
+                    <span class="platform-detail">10 &amp; 11</span>
+                </div>
+                <div class="platform-cell">
+                    <i class="f7-icons" aria-hidden="true">logo_apple</i>
+                    <span class="platform-name">macOS</span>
+                    <span class="platform-detail">Intel · Apple Silicon</span>
+                </div>
+                <div class="platform-cell">
+                    <i class="f7-icons" aria-hidden="true">desktopcomputer</i>
+                    <span class="platform-name">Linux</span>
+                    <span class="platform-detail">apt · dnf · pacman</span>
+                </div>
+                <div class="platform-cell">
+                    <i class="f7-icons" aria-hidden="true">device_phone_portrait</i>
+                    <span class="platform-name">Android</span>
+                    <span class="platform-detail">via Termux</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy -->
+    <section class="section" id="privacy" aria-labelledby="privacy-heading">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="eyebrow">Privacy</p>
+                <h2 class="section-title" id="privacy-heading">Your data stays yours.</h2>
+                <p class="section-body">Privacy isn't a feature here — it's the constraint every other decision is built
+                    around.</p>
+            </div>
+
+            <div class="privacy-grid reveal">
+
+                <div class="privacy-cell">
+                    <i class="f7-icons" aria-hidden="true">eye_slash_fill</i>
+                    <h4 class="privacy-title">No tracking</h4>
+                    <p class="privacy-desc">Zero analytics, telemetry, or usage data. Not even anonymous crash reports.
+                    </p>
+                </div>
+                <div class="privacy-cell">
+                    <i class="f7-icons" aria-hidden="true">trash_fill</i>
+                    <h4 class="privacy-title">No history</h4>
+                    <p class="privacy-desc">Download history never written to disk. Every session starts completely
+                        clean.</p>
+                </div>
+                <div class="privacy-cell">
+                    <i class="f7-icons" aria-hidden="true">lock_fill</i>
+                    <h4 class="privacy-title">Local processing</h4>
+                    <p class="privacy-desc">All merging happens on your machine via ffmpeg. Zero cloud involvement.</p>
+                </div>
+                <div class="privacy-cell">
+                    <i class="f7-icons" aria-hidden="true">xmark_shield_fill</i>
+                    <h4 class="privacy-title">No metadata files</h4>
+                    <p class="privacy-desc">No .info.json, thumbnail, or comment files written alongside downloads.</p>
+                </div>
+                <div class="privacy-cell">
+                    <i class="f7-icons" aria-hidden="true">globe</i>
+                    <h4 class="privacy-title">Minimal outbound</h4>
+                    <p class="privacy-desc">Connects to YouTube for video data and GitHub once on first run for yt-dlp.
+                    </p>
+                </div>
+                <div class="privacy-cell">
+                    <i class="f7-icons" aria-hidden="true">checkmark_shield_fill</i>
+                    <h4 class="privacy-title">Open source</h4>
+                    <p class="privacy-desc">Every line is on GitHub. Read it, audit it, fork it. No trust required.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" aria-labelledby="cta-heading">
+        <div class="container">
+            <div class="cta-row reveal">
+                <div>
+                    <h2 class="cta-title" id="cta-heading">Ready to start?</h2>
+                    <p class="cta-body">Free forever. No account. Just run it.</p>
+                </div>
+                <a href="#install" class="btn btn-filled">
+                    <i class="f7-icons" aria-hidden="true">arrow_down_circle_fill</i>Install Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="footer-inner">
+            <span class="footer-copy">
+                Made with <span class="heart" aria-label="love">♥</span> by Bhavesh Patil · MIT License
+            </span>
+            <nav class="footer-links" aria-label="Footer">
+                <a class="footer-link" href="https://github.com/iambhvsh/ytdl" target="_blank" rel="noopener">
+                    <i class="f7-icons" aria-hidden="true">logo_github</i>GitHub
+                </a>
+                <a class="footer-link" href="https://github.com/iambhvsh/ytdl/issues" target="_blank" rel="noopener">
+                    <i class="f7-icons" aria-hidden="true">ant_circle_fill</i>Issues
+                </a>
+                <a class="footer-link" href="https://npmjs.com/package/@iambhvsh/ytdl" target="_blank" rel="noopener">
+                    <i class="f7-icons" aria-hidden="true">cube_box_fill</i>npm
+                </a>
+            </nav>
+        </div>
+    </footer>
+
+</body>
+
+</html>

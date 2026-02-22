@@ -1,0 +1,980 @@
+/* ── Apple HIG Design Tokens ─────────────────────────────── */
+:root {
+    /* Apple System Colors — Dark */
+    --label: #ffffff;
+    --label-secondary: rgba(235, 235, 245, .6);
+    --label-tertiary: rgba(235, 235, 245, .3);
+    --label-quaternary: rgba(235, 235, 245, .18);
+
+    --system-blue: #0a84ff;
+    --system-green: #30d158;
+    --system-red: #ff453a;
+    --system-yellow: #ffd60a;
+    --system-indigo: #5e5ce6;
+
+    --fill-primary: rgba(120, 120, 128, .36);
+    --fill-secondary: rgba(120, 120, 128, .32);
+    --fill-tertiary: rgba(118, 118, 128, .24);
+    --fill-quaternary: rgba(116, 116, 128, .18);
+
+    --grouped-bg: #000000;
+    --grouped-bg-2: #1c1c1e;
+    --grouped-bg-3: #2c2c2e;
+    --grouped-bg-4: #3a3a3c;
+
+    --separator: rgba(84, 84, 88, .65);
+    --separator-opaque: #38383a;
+
+    --glass-bg: rgba(28, 28, 30, .72);
+    --glass-border: rgba(255, 255, 255, .08);
+
+    /* Apple Type Scale */
+    --large-title: 2.125rem;
+    /* 34px */
+    --title-1: 1.75rem;
+    /* 28px */
+    --title-2: 1.375rem;
+    /* 22px */
+    --title-3: 1.25rem;
+    /* 20px */
+    --headline: 1.0625rem;
+    /* 17px — semibold */
+    --body: 1.0625rem;
+    /* 17px */
+    --callout: 1rem;
+    /* 16px */
+    --subhead: 0.9375rem;
+    /* 15px */
+    --footnote: 0.8125rem;
+    /* 13px */
+    --caption-1: 0.75rem;
+    /* 12px */
+    --caption-2: 0.6875rem;
+    /* 11px */
+
+    /* Apple Spacing — 8pt grid */
+    --sp-1: 4px;
+    --sp-2: 8px;
+    --sp-3: 12px;
+    --sp-4: 16px;
+    --sp-5: 20px;
+    --sp-6: 24px;
+    --sp-8: 32px;
+    --sp-10: 40px;
+    --sp-12: 48px;
+    --sp-16: 64px;
+    --sp-20: 80px;
+    --sp-24: 96px;
+
+    /* Apple Corner Radii */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --radius-xl: 18px;
+    --radius-2xl: 22px;
+
+    /* Fonts */
+    --font-system: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
+    --font-mono: 'SF Mono', ui-monospace, 'Cascadia Code', 'Fira Code', monospace;
+
+    /* Layout */
+    --content-max: 980px;
+    --side-padding: clamp(16px, 5vw, 44px);
+}
+
+/* ── Reset ──────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: var(--font-system);
+    font-size: var(--body);
+    line-height: 1.47059;
+    /* Apple's 25/17 ratio */
+    color: var(--label);
+    background: var(--grouped-bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
+    border: none;
+}
+
+/* ── Layout Wrapper ─────────────────────────────────────── */
+.container {
+    max-width: var(--content-max);
+    margin-inline: auto;
+    padding-inline: var(--side-padding);
+}
+
+/* ── Navigation Bar ─────────────────────────────────────── */
+/* Apple HIG: Navigation bar height = 44pt on iPhone, ~48px web */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 52px;
+    background: var(--glass-bg);
+    border-bottom: .5px solid var(--separator);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+}
+
+.navbar-inner {
+    max-width: var(--content-max);
+    margin-inline: auto;
+    padding-inline: var(--side-padding);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-6);
+}
+
+/* Brand — monospace, tightly kerned */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2);
+    font-family: var(--font-mono);
+    font-size: var(--footnote);
+    font-weight: 600;
+    letter-spacing: .04em;
+    color: var(--label);
+    flex-shrink: 0;
+}
+
+.live-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--system-green);
+    animation: pulse-dot 2.8s ease-in-out infinite;
+    flex-shrink: 0;
+}
+
+@keyframes pulse-dot {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: .25;
+    }
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-8);
+}
+
+/* Apple HIG: Navigation link — Body weight regular, secondary label */
+.nav-link {
+    font-size: var(--subhead);
+    font-weight: 400;
+    color: var(--label-secondary);
+    transition: color .15s ease;
+}
+
+.nav-link:hover {
+    color: var(--label);
+}
+
+/* Apple HIG: Primary tint = system blue */
+.nav-cta {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-1);
+    font-size: var(--footnote);
+    font-weight: 500;
+    color: var(--system-blue);
+    flex-shrink: 0;
+    transition: opacity .15s ease;
+}
+
+.nav-cta i {
+    font-size: 15px;
+}
+
+.nav-cta:hover {
+    opacity: .7;
+}
+
+@media (max-width: 600px) {
+    .nav-links {
+        display: none;
+    }
+}
+
+/* ── Hero ───────────────────────────────────────────────── */
+.hero {
+    padding-top: clamp(72px, 12vw, 120px);
+    padding-bottom: clamp(56px, 9vw, 88px);
+    border-bottom: .5px solid var(--separator);
+    text-align: center;
+}
+
+/* Badge — Apple's pill chip */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-2);
+    background: var(--fill-tertiary);
+    border: .5px solid var(--glass-border);
+    border-radius: 100px;
+    padding: 4px 12px 4px 8px;
+    font-family: var(--font-mono);
+    font-size: var(--caption-1);
+    font-weight: 500;
+    letter-spacing: .06em;
+    color: var(--system-green);
+    margin-bottom: var(--sp-6);
+    animation: hero-in .5s cubic-bezier(.25, .46, .45, .94) both .05s;
+}
+
+.badge-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+/* Apple HIG: Large Title — 34pt, bold, tight tracking */
+.hero-title {
+    font-size: clamp(2.125rem, 8vw, 4rem);
+    font-weight: 700;
+    letter-spacing: -.04em;
+    line-height: 1.05;
+    margin-bottom: var(--sp-5);
+    animation: hero-in .5s cubic-bezier(.25, .46, .45, .94) both .12s;
+}
+
+.hero-title-blue {
+    color: var(--system-blue);
+    display: block;
+}
+
+/* Apple HIG: Body text for descriptions — regular weight, secondary label */
+.hero-body {
+    font-size: clamp(var(--subhead), 2vw, var(--callout));
+    font-weight: 400;
+    color: var(--label-secondary);
+    line-height: 1.6;
+    max-width: 40ch;
+    margin-inline: auto;
+    margin-bottom: var(--sp-10);
+    animation: hero-in .5s cubic-bezier(.25, .46, .45, .94) both .19s;
+}
+
+@keyframes hero-in {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.btn-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: var(--sp-3);
+    animation: hero-in .5s cubic-bezier(.25, .46, .45, .94) both .26s;
+}
+
+/* ── Buttons — Apple HIG Filled / Outlined ──────────────── */
+/* Apple HIG: Minimum touch target 44×44pt */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--sp-2);
+    padding: 11px 20px;
+    border-radius: var(--radius-md);
+    font-size: var(--subhead);
+    font-weight: 600;
+    letter-spacing: -.01em;
+    white-space: nowrap;
+    transition: opacity .15s ease, transform .1s ease;
+    min-height: 44px;
+}
+
+.btn i {
+    font-size: 15px;
+}
+
+.btn:active {
+    transform: scale(.97);
+}
+
+/* Filled — Apple primary action */
+.btn-filled {
+    background: var(--label);
+    color: var(--grouped-bg);
+}
+
+.btn-filled:hover {
+    opacity: .82;
+}
+
+/* Tinted — Apple secondary tinted */
+.btn-tinted {
+    background: rgba(10, 132, 255, .15);
+    color: var(--system-blue);
+}
+
+.btn-tinted:hover {
+    background: rgba(10, 132, 255, .22);
+}
+
+/* Plain outlined */
+.btn-plain {
+    background: transparent;
+    color: var(--label-secondary);
+    border: .5px solid var(--separator-opaque);
+}
+
+.btn-plain:hover {
+    color: var(--label);
+    border-color: var(--label-tertiary);
+}
+
+/* ── Terminal ───────────────────────────────────────────── */
+.terminal-section {
+    padding-block: clamp(var(--sp-12), 8vw, var(--sp-20));
+    border-bottom: .5px solid var(--separator);
+}
+
+/* Apple-style window chrome */
+.terminal-window {
+    background: #0a0a0a;
+    border: .5px solid var(--separator-opaque);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, .6), 0 0 0 .5px rgba(255, 255, 255, .06);
+}
+
+.terminal-titlebar {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2);
+    padding: 14px var(--sp-5);
+    border-bottom: .5px solid var(--separator-opaque);
+    background: #111111;
+}
+
+.traffic-light {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.terminal-name {
+    font-family: var(--font-mono);
+    font-size: var(--caption-2);
+    color: var(--label-tertiary);
+    margin-left: var(--sp-3);
+    letter-spacing: .04em;
+}
+
+.terminal-body {
+    padding: clamp(var(--sp-5), 4vw, var(--sp-8)) clamp(var(--sp-5), 4vw, var(--sp-10));
+    font-family: var(--font-mono);
+    font-size: clamp(.68rem, 1.6vw, .8125rem);
+    line-height: 2;
+    overflow-x: auto;
+}
+
+.tl {
+    display: block;
+    white-space: pre;
+}
+
+.t-dim {
+    color: var(--label-tertiary);
+}
+
+.t-blue {
+    color: var(--system-blue);
+}
+
+.t-green {
+    color: var(--system-green);
+}
+
+.t-yellow {
+    color: var(--system-yellow);
+}
+
+.t-white {
+    color: var(--label);
+}
+
+.t-prompt {
+    display: flex;
+    gap: var(--sp-2);
+}
+
+.t-prompt::before {
+    content: '❯';
+    color: var(--system-green);
+}
+
+.t-cursor {
+    display: inline-block;
+    width: 7px;
+    height: 1.05em;
+    background: var(--system-blue);
+    vertical-align: text-bottom;
+    border-radius: 1px;
+    animation: blink 1.1s step-end infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* ── Section Shell ──────────────────────────────────────── */
+.section {
+    padding-block: clamp(var(--sp-16), 10vw, var(--sp-24));
+    border-bottom: .5px solid var(--separator);
+}
+
+.section-header {
+    margin-bottom: clamp(var(--sp-10), 5vw, var(--sp-16));
+}
+
+/* Apple HIG: Section eyebrow — Caption 1, uppercase, tertiary label */
+.eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--caption-2);
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--label-tertiary);
+    margin-bottom: var(--sp-3);
+}
+
+/* Apple HIG: Section heading — Title 1 or Large Title */
+.section-title {
+    font-size: clamp(var(--title-1), 4.5vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -.04em;
+    line-height: 1.07;
+    margin-bottom: var(--sp-4);
+}
+
+/* Apple HIG: Section subhead — Body, secondary label */
+.section-body {
+    font-size: var(--callout);
+    color: var(--label-secondary);
+    line-height: 1.6;
+    max-width: 44ch;
+}
+
+/* ── Grouped List — Apple HIG Inset Grouped ─────────────── */
+/* Feature Cards mimic Apple's grouped inset list style */
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: .5px solid var(--separator-opaque);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+}
+
+@media (max-width: 720px) {
+    .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 420px) {
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.feature-card {
+    padding: clamp(var(--sp-5), 3.5vw, var(--sp-8));
+    border-right: .5px solid var(--separator-opaque);
+    border-bottom: .5px solid var(--separator-opaque);
+    transition: background .2s ease;
+}
+
+.feature-card:hover {
+    background: var(--grouped-bg-2);
+}
+
+.feature-grid .feature-card:nth-child(3n) {
+    border-right: none;
+}
+
+.feature-grid .feature-card:nth-last-child(-n+3) {
+    border-bottom: none;
+}
+
+@media (max-width: 720px) {
+    .feature-grid .feature-card:nth-child(3n) {
+        border-right: .5px solid var(--separator-opaque);
+    }
+
+    .feature-grid .feature-card:nth-child(2n) {
+        border-right: none;
+    }
+
+    .feature-grid .feature-card:nth-last-child(-n+3) {
+        border-bottom: .5px solid var(--separator-opaque);
+    }
+
+    .feature-grid .feature-card:nth-last-child(-n+2) {
+        border-bottom: none;
+    }
+}
+
+@media (max-width: 420px) {
+    .feature-card {
+        border-right: none !important;
+        border-bottom: .5px solid var(--separator-opaque) !important;
+    }
+
+    .feature-card:last-child {
+        border-bottom: none !important;
+    }
+}
+
+/* Apple HIG: Icon container — system fill, sf symbol style */
+.feature-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-sm);
+    background: var(--fill-tertiary);
+    border: .5px solid var(--glass-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    color: var(--label-secondary);
+    margin-bottom: var(--sp-5);
+}
+
+/* Apple HIG: Label — Footnote semibold */
+.feature-name {
+    font-size: var(--footnote);
+    font-weight: 600;
+    letter-spacing: -.01em;
+    margin-bottom: var(--sp-2);
+}
+
+/* Apple HIG: Description — Caption 1, tertiary label */
+.feature-desc {
+    font-size: var(--caption-1);
+    color: var(--label-tertiary);
+    line-height: 1.7;
+}
+
+/* ── Install Section ────────────────────────────────────── */
+.install-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(var(--sp-8), 6vw, var(--sp-16));
+    align-items: start;
+}
+
+@media (max-width: 600px) {
+    .install-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Steps — Apple HIG List with separators */
+.steps {
+    display: flex;
+    flex-direction: column;
+}
+
+.step {
+    display: flex;
+    gap: var(--sp-4);
+    padding-block: var(--sp-5);
+    border-bottom: .5px solid var(--separator-opaque);
+}
+
+.step:first-child {
+    border-top: .5px solid var(--separator-opaque);
+}
+
+.step-num {
+    font-family: var(--font-mono);
+    font-size: var(--caption-2);
+    color: var(--label-tertiary);
+    width: 20px;
+    flex-shrink: 0;
+    padding-top: 3px;
+    letter-spacing: .04em;
+}
+
+.step-title {
+    font-size: var(--footnote);
+    font-weight: 600;
+    letter-spacing: -.01em;
+    margin-bottom: var(--sp-1);
+}
+
+.step-desc {
+    font-size: var(--caption-1);
+    color: var(--label-tertiary);
+    line-height: 1.65;
+}
+
+.step-desc code {
+    font-family: var(--font-mono);
+    font-size: .72rem;
+    color: var(--system-blue);
+    background: rgba(10, 132, 255, .1);
+    padding: 1px 5px;
+    border-radius: 4px;
+}
+
+/* Code cards — Apple HIG grouped bg style */
+.code-stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+}
+
+.code-card {
+    border: .5px solid var(--separator-opaque);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--grouped-bg-2);
+}
+
+.code-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--sp-2) var(--sp-4);
+    border-bottom: .5px solid var(--separator-opaque);
+}
+
+.code-label {
+    font-family: var(--font-mono);
+    font-size: var(--caption-2);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--label-tertiary);
+}
+
+.copy-btn {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: var(--caption-2);
+    color: var(--label-tertiary);
+    background: transparent;
+    border-radius: var(--radius-sm);
+    padding: 3px 8px;
+    transition: background .15s, color .15s;
+    min-height: 28px;
+    /* Apple HIG min touch target grace */
+}
+
+.copy-btn:hover {
+    background: var(--fill-tertiary);
+    color: var(--label);
+}
+
+.copy-btn i {
+    font-size: 12px;
+}
+
+.code-card pre {
+    padding: var(--sp-4);
+    font-family: var(--font-mono);
+    font-size: var(--caption-1);
+    color: var(--label);
+    overflow-x: auto;
+    line-height: 1.7;
+}
+
+/* ── Platforms — Apple HIG Inline grouped ───────────────── */
+.platform-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border: .5px solid var(--separator-opaque);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+}
+
+@media (max-width: 460px) {
+    .platform-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.platform-cell {
+    padding: clamp(var(--sp-6), 4vw, var(--sp-10));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-3);
+    text-align: center;
+    border-right: .5px solid var(--separator-opaque);
+    transition: background .2s ease;
+}
+
+.platform-cell:last-child {
+    border-right: none;
+}
+
+.platform-cell:hover {
+    background: var(--grouped-bg-2);
+}
+
+@media (max-width: 460px) {
+    .platform-cell:nth-child(2n) {
+        border-right: none;
+    }
+
+    .platform-cell:nth-child(-n+2) {
+        border-bottom: .5px solid var(--separator-opaque);
+    }
+}
+
+.platform-cell i {
+    font-size: 26px;
+    color: var(--label-secondary);
+}
+
+.platform-name {
+    font-size: var(--footnote);
+    font-weight: 600;
+}
+
+.platform-detail {
+    font-size: var(--caption-2);
+    color: var(--label-tertiary);
+}
+
+/* ── Privacy Grid ───────────────────────────────────────── */
+.privacy-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border: .5px solid var(--separator-opaque);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+}
+
+@media (max-width: 680px) {
+    .privacy-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 400px) {
+    .privacy-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.privacy-cell {
+    padding: clamp(var(--sp-5), 3.5vw, var(--sp-8));
+    border-right: .5px solid var(--separator-opaque);
+    border-bottom: .5px solid var(--separator-opaque);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-3);
+    transition: background .2s ease;
+}
+
+.privacy-cell:hover {
+    background: var(--grouped-bg-2);
+}
+
+.privacy-grid .privacy-cell:nth-child(3n) {
+    border-right: none;
+}
+
+.privacy-grid .privacy-cell:nth-last-child(-n+3) {
+    border-bottom: none;
+}
+
+@media (max-width: 680px) {
+    .privacy-grid .privacy-cell:nth-child(3n) {
+        border-right: .5px solid var(--separator-opaque);
+    }
+
+    .privacy-grid .privacy-cell:nth-child(2n) {
+        border-right: none;
+    }
+
+    .privacy-grid .privacy-cell:nth-last-child(-n+3) {
+        border-bottom: .5px solid var(--separator-opaque);
+    }
+
+    .privacy-grid .privacy-cell:nth-last-child(-n+2) {
+        border-bottom: none;
+    }
+}
+
+@media (max-width: 400px) {
+    .privacy-cell {
+        border-right: none !important;
+        border-bottom: .5px solid var(--separator-opaque) !important;
+    }
+
+    .privacy-cell:last-child {
+        border-bottom: none !important;
+    }
+}
+
+.privacy-cell i {
+    font-size: 18px;
+    color: var(--system-green);
+}
+
+.privacy-title {
+    font-size: var(--footnote);
+    font-weight: 600;
+}
+
+.privacy-desc {
+    font-size: var(--caption-1);
+    color: var(--label-tertiary);
+    line-height: 1.7;
+}
+
+/* ── CTA — Apple promotional style ─────────────────────── */
+.cta-section {
+    padding-block: clamp(var(--sp-12), 8vw, var(--sp-20));
+    border-bottom: .5px solid var(--separator);
+}
+
+.cta-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--sp-6);
+}
+
+.cta-title {
+    font-size: clamp(var(--title-2), 3.5vw, var(--large-title));
+    font-weight: 700;
+    letter-spacing: -.035em;
+    line-height: 1.1;
+}
+
+.cta-body {
+    font-size: var(--footnote);
+    color: var(--label-secondary);
+    margin-top: var(--sp-2);
+}
+
+/* ── Footer ─────────────────────────────────────────────── */
+.footer {
+    padding-block: clamp(var(--sp-8), 4vw, var(--sp-12));
+}
+
+.footer-inner {
+    max-width: var(--content-max);
+    margin-inline: auto;
+    padding-inline: var(--side-padding);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--sp-4);
+}
+
+.footer-copy {
+    font-size: var(--caption-2);
+    color: var(--label-tertiary);
+}
+
+.heart {
+    color: var(--system-red);
+}
+
+.footer-links {
+    display: flex;
+    gap: var(--sp-6);
+}
+
+.footer-link {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-1);
+    font-size: var(--caption-2);
+    color: var(--label-tertiary);
+    transition: color .15s ease;
+}
+
+.footer-link:hover {
+    color: var(--label-secondary);
+}
+
+.footer-link i {
+    font-size: 13px;
+}
+
+/* ── Scroll Reveal ──────────────────────────────────────── */
+.reveal {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity .5s cubic-bezier(.25, .46, .45, .94),
+        transform .5s cubic-bezier(.25, .46, .45, .94);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── Scrollbar ──────────────────────────────────────────── */
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--separator-opaque);
+    border-radius: 2px;
+}
